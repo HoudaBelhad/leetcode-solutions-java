@@ -16,7 +16,6 @@ class Solution {
      * @return true if x is a palindrome, false otherwise.
      */
     public boolean isPalindrome(int x) {
-        IO.println("Hello");
         return true;
     }
 }
