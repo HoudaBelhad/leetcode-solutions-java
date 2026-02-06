@@ -1,6 +1,7 @@
 package codes.yam.leetcode.palindromenumber;
 
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.profile.GCProfiler;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
@@ -17,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class SolutionBenchmark {
     private final Solution solution = new Solution();
 
-    @Param({"7", "121", "1234321", "2147483647"})
+    // Inputs with 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 digits — for O(log10(n)) scaling
+    @Param({"7", "77", "777", "7777", "77777", "777777", "7777777", "77777777", "777777777", "2147483647"})
     private int input;
 
     @Benchmark
@@ -28,6 +30,7 @@ public class SolutionBenchmark {
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
                 .include(SolutionBenchmark.class.getSimpleName())
+                .addProfiler(GCProfiler.class)
                 .result("target/benchmark-results.json")
                 .resultFormat(ResultFormatType.JSON)
                 .build();
