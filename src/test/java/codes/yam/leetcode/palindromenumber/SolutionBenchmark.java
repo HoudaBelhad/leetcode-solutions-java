@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 public class SolutionBenchmark {
     private final Solution solution = new Solution();
 
-    @SuppressWarnings("unused") // assigned by JMH via reflection
     @Param({"7", "121", "1234321", "2147483647"})
     private int input;
 
