@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>hello-world</artifactId>
+    <groupId>codes.yam</groupId>
+    <artifactId>leetcode-solutions</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -14,40 +14,52 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.compilerArgs>--enable-preview</maven.compiler.compilerArgs>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.0</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.example.Main</mainClass>
-                        </manifest>
-                    </archive>
+                    <argLine>--enable-preview</argLine>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.12.0</version>
+                <configuration>
+                    <show>private</show>
+                    <additionalOptions>--enable-preview</additionalOptions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>1.9.20</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <phase>pre-site</phase>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>dokka</goal>
                         </goals>
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>--enable-preview</argument>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>org.example.Main</argument>
-                            </arguments>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
