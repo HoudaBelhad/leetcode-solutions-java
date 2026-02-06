@@ -1,6 +1,7 @@
 package codes.yam.leetcode.palindromenumber;
 
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
@@ -27,6 +28,8 @@ public class SolutionBenchmark {
     public static void main(String[] args) throws Exception {
         Options opt = new OptionsBuilder()
                 .include(SolutionBenchmark.class.getSimpleName())
+                .result("target/benchmark-results.json")
+                .resultFormat(ResultFormatType.JSON)
                 .build();
         new Runner(opt).run();
     }
