@@ -1,5 +1,9 @@
 # LeetCode Solutions
 
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Java](https://img.shields.io/badge/java-21-blue)
+![LeetCode](https://img.shields.io/badge/LeetCode-Solutions-orange)
+
 My LeetCode solutions in Java, focused on clean code and optimal algorithms.
 
 ## Solutions
